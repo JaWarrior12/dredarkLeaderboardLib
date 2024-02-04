@@ -1,0 +1,18 @@
+[project]
+name = "dredarkLeaderboardLib"
+version = "1.0.0-alpha"
+authors = [
+  { name="JaWarrior12"},
+]
+description = "A Library to fetch from the Deep Space Airships leaderboards."
+readme = "README.md"
+requires-python = ">=3.12.1"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/JaWarrior12/dredarkLeaderboardLib"
+Issues = "https://github.com/JaWarrior12/dredarkLeaderboardLib/issues"
