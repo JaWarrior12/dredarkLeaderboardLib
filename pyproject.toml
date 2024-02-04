@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dredarkLeaderboardLib"
-version = "1.0.0-alpha.3"
+version = "1.0.0-alpha.4"
 authors = [
   { name="JaWarrior12"},
 ]
@@ -20,3 +20,4 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/JaWarrior12/dredarkLeaderboardLib"
 Issues = "https://github.com/JaWarrior12/dredarkLeaderboardLib/issues"
+discord = "https://discord.com/WGmCS7pJ48"
