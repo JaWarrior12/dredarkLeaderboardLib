@@ -160,3 +160,6 @@ cython_debug/
 #.idea/
 
 notes.txt
+#Ignore Builds, Workflow Builds For On Its Own
+dist/*
+/dist
