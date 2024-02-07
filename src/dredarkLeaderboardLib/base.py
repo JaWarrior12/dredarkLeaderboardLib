@@ -6,9 +6,9 @@ class Leaderboard():
     This class is used to scrape the Deep Space Airships leaderboards
     """
     def __init__(self) -> None:
-        pass
+        self.shipData=0
 
-    def fetch_ships(self,url:str,limit=None):
+    def scan_Leaderboard(self,url:str,limit=None):
         """
         Multiplies two numbers and returns the result.
     
@@ -17,7 +17,7 @@ class Leaderboard():
             limit (int): Limit of how many ships to retrieve from the page.
     
         Returns:
-            dict: Dictonary of ships, the key is the hexcode followed by a dict containing name (str), rank (str), and score (str).
+            Nothing. The scanned data is stored in the 'shipData' instance variable.
         """
         ship_info={}
         if "ship" in url:
@@ -57,4 +57,11 @@ class Leaderboard():
                 data=[i.text.strip() for i in rawData]
                 hexcode=data[2].replace("{","").replace("}","")
                 ship_info.update({hexcode:{"name":data[1],"rank":data[0],"score":data[3].split(" ")[0]}})
-        return ship_info
+        self.shipData=ship_info
+    
+    def return_data(self):
+        """
+        Returns:
+            dict : The dictionary of ship data from the 'shipData' instance variable
+        """
+        return self.shipData
