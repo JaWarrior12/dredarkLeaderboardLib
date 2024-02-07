@@ -65,3 +65,18 @@ class Leaderboard():
             dict : The dictionary of ship data from the 'shipData' instance variable
         """
         return self.shipData
+    
+    def fetch_ship(self,searchKey,*,searchTem):
+        """
+        Multiplies two numbers and returns the result.
+    
+        Args:
+            searchKey (str): Search for an individual ship by `name, rank, points, or hex (hex code)`. 
+            searchTerm (str): 
+    
+        Returns:
+            Nothing. The scanned data is stored in the 'shipData' instance variable.
+        """
+        viableKeys=["name","rank","points","hex"]
+        if searchKey not in viableKeys:
+            raise BadSearchKey(f"{searchKey} is not in the approved list of searchKeys; Approved List: {viableKeys}")
