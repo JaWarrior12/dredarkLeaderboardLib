@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+from .errors import *
+
 class Leaderboard():
     """
     This class is used to scrape the Deep Space Airships leaderboards
@@ -79,4 +81,4 @@ class Leaderboard():
         """
         viableKeys=["name","rank","points","hex"]
         if searchKey not in viableKeys:
-            raise BadSearchKey#f"{searchKey} is not in the approved list of searchKeys; Approved List: {viableKeys}")
+            raise MyException("Test Exception") #f"{searchKey} is not in the approved list of searchKeys; Approved List: {viableKeys}")
