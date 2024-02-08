@@ -1,9 +1,9 @@
 __all__=('BadSearchKey')
 
-class customError(Exception):
+class CustomError(Exception):
     pass
 
-class MyException(Exception):
+class BadSearchKey(Exception):
     """Bad Search Key; Key Not In Usable Keys List"""
     pass
     #def __init__(message):
