@@ -81,4 +81,4 @@ class Leaderboard():
         """
         viableKeys=["name","rank","points","hex"]
         if searchKey not in viableKeys:
-            raise BadSearchKey(f"{searchKey} is not in the approved list of searchKeys; Approved List: {viableKeys}")
+            raise BadSearchKey#(f"{searchKey} is not in the approved list of searchKeys; Approved List: {viableKeys}")
