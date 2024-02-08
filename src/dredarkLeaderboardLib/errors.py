@@ -1,4 +1,4 @@
-__all__=('BadSearchKey')
+#__all__=('BadSearchKey')
 
 class CustomError(Exception):
     pass

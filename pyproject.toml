@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dredarkLeaderboardLib"
-version = "1.0.0-alpha.11"
+version = "1.0.0-alpha.12"
 authors = [
   { name="JaWarrior12"},
 ]
