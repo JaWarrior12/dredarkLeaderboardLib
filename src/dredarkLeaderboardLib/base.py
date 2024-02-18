@@ -68,7 +68,7 @@ class Leaderboard():
         """
         return self.shipData
     
-    def fetch_ship(self,searchKey,*,searchTem):
+    def fetch_ship(self,searchKey,searchTerm):
         """
         Multiplies two numbers and returns the result.
     
@@ -82,3 +82,7 @@ class Leaderboard():
         viableKeys=["name","rank","points","hex"]
         if searchKey not in viableKeys:
             raise BadSearchKey#(f"{searchKey} is not in the approved list of searchKeys; Approved List: {viableKeys}")
+        else:
+            def scan_data(data, term):
+                return list(filter(lambda x: x.get(searchKey) == term, data))
+            return scan_data(self.shipData,searchTerm)
