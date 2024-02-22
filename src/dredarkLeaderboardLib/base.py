@@ -3,15 +3,17 @@ from bs4 import BeautifulSoup
 
 from .errors import *
 
+
 class Leaderboard():
-    """
+  """
     This class is used to scrape the Deep Space Airships leaderboards
     """
-    def __init__(self) -> None:
-        self.shipData=0
 
-    def scan_Leaderboard(self,url:str,limit=None):
-        """
+  def __init__(self):
+    self.shipData = []
+
+  def scan_Leaderboard(self, url: str, limit=None):
+    """
         Multiplies two numbers and returns the result.
     
         Args:
@@ -21,55 +23,118 @@ class Leaderboard():
         Returns:
             Nothing. The scanned data is stored in the 'shipData' instance variable.
         """
-        ship_info={}
-        if "ship" in url:
-            response = requests.get(url)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            ships = soup.find("tbody").find_all("tr",limit=limit)
-            for ship in ships:
-                rawData=ship.find_all("td")
-                data=[i.text.strip() for i in rawData]
-                hexcode=data[2].replace("{","").replace("}","")
-                ship_info.update({hexcode:{"name":data[1],"rank":data[0],"score":data[3].split(" ")[0]}})
-            #print(ship_info)
-        elif "pilot" in url:
-            response = requests.get(url)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            ships = soup.find("tbody").find_all("tr",limit=limit)
-            for ship in ships:
-                rawData=ship.find_all("td")
-                data=[i.text.strip() for i in rawData]
-                name=data[1]
-                ship_info.update({name:{"rank":data[0],"score":data[3].split(" ")[0]}})
-        elif "clan" in url:
-            response = requests.get(url)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            ships = soup.find("tbody").find_all("tr",limit=limit)
-            for ship in ships:
-                rawData=ship.find_all("td")
-                data=[i.text.strip() for i in rawData]
-                clan=data[1]
-                ship_info.update({clan:{"rank":data[0],"score":data[3].split(" ")[0]}})
-        else:
-            response = requests.get(url)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            ships = soup.find("tbody").find_all("tr",limit=limit)
-            for ship in ships:
-                rawData=ship.find_all("td")
-                data=[i.text.strip() for i in rawData]
-                hexcode=data[2].replace("{","").replace("}","")
-                ship_info.update({hexcode:{"name":data[1],"rank":data[0],"score":data[3].split(" ")[0]}})
-        self.shipData=ship_info
-    
-    def return_data(self):
-        """
+    ship_info = {}
+    if url.count("ship")>=1:
+      prin
+      response = requests.get(url)
+      soup = BeautifulSoup(response.text, 'html.parser')
+      #print(soup)
+      tables=str(soup.find_all("table", {"class": "leaderboard"})).replace("[","").replace("]","").replace('<table class="leaderboard">','').replace("</table>","").replace("<tr>","").replace("<td>","")
+      #print(f"tables: {tables}")
+      lbEntries=tables.split("</tr>")
+      #print(lbEntries)
+      #ships = tables.find("tbody")  #.find_all("tr",limit=limit)
+      ships=lbEntries
+      #print(ships)
+      for ship in ships:
+        try:
+          rawData = ship.split("</td>")
+          rawData.remove("")
+          data = rawData
+          listEntry={
+            "hex": data[1],
+            "rank": int(data[0].replace("#","")),
+            "score": data[2].split(" ")[0]
+            #"page":pageNum
+          }
+          self.shipData.append(listEntry)
+        except Exception as e:
+          pass
+    elif url.count("pilot")>=1:
+      response = requests.get(url)
+      soup = BeautifulSoup(response.text, 'html.parser')
+      #print(soup)
+      tables=str(soup.find_all("table", {"class": "leaderboard"})).replace("[","").replace("]","").replace('<table class="leaderboard">','').replace("</table>","").replace("<tr>","").replace("<td>","")
+      #print(f"tables: {tables}")
+      lbEntries=tables.split("</tr>")
+      #print(lbEntries)
+      #ships = tables.find("tbody")  #.find_all("tr",limit=limit)
+      ships=lbEntries
+      #print(ships)
+      for ship in ships:
+        try:
+          rawData = ship.split("</td>")
+          rawData.remove("")
+          data = rawData
+          listEntry={
+            "name": data[1],
+            "rank": int(data[0].replace("#","")),
+            "score": data[2].split(" ")[0]
+            #"page":pageNum
+          }
+          self.shipData.append(listEntry)
+        except Exception as e:
+          pass
+    elif "clan" in url:
+      response = requests.get(url)
+      soup = BeautifulSoup(response.text, 'html.parser')
+      #print(soup)
+      tables=str(soup.find_all("table", {"class": "leaderboard"})).replace("[","").replace("]","").replace('<table class="leaderboard">','').replace("</table>","").replace("<tr>","").replace("<td>","")
+      #print(f"tables: {tables}")
+      lbEntries=tables.split("</tr>")
+      #print(lbEntries)
+      #ships = tables.find("tbody")  #.find_all("tr",limit=limit)
+      ships=lbEntries
+      #print(ships)
+      for ship in ships:
+        try:
+          rawData = ship.split("</td>")
+          rawData.remove("")
+          data = rawData
+          listEntry={
+            "clan": data[1],
+            "rank": int(data[0].replace("#","")),
+            "score": data[2].split(" ")[0]
+            #"page":pageNum
+          }
+          self.shipData.append(listEntry)
+        except Exception as e:
+          pass
+    else:
+      response = requests.get(url)
+      soup = BeautifulSoup(response.text, 'html.parser')
+      #print(soup)
+      tables=str(soup.find_all("table", {"class": "leaderboard"})).replace("[","").replace("]","").replace('<table class="leaderboard">','').replace("</table>","").replace("<tr>","").replace("<td>","")
+      #print(f"tables: {tables}")
+      lbEntries=tables.split("</tr>")
+      #print(lbEntries)
+      #ships = tables.find("tbody")  #.find_all("tr",limit=limit)
+      ships=lbEntries
+      #print(ships)
+      for ship in ships:
+        try:
+          rawData = ship.split("</td>")
+          rawData.remove("")
+          data = rawData
+          listEntry={
+            "name": data[1],
+            "rank": int(data[0].replace("#","")),
+            "score": data[2].split(" ")[0]
+            #"page":pageNum
+          }
+          self.shipData.append(listEntry)
+        except Exception as e:
+          pass
+
+  def return_data(self):
+    """
         Returns:
             dict : The dictionary of ship data from the 'shipData' instance variable
         """
-        return self.shipData
-    
-    def fetch_ship(self,searchKey,searchTerm):
-        """
+    return self.shipData
+
+  def fetch_ship(self, searchKey, searchTerm):
+    """
         Multiplies two numbers and returns the result.
     
         Args:
@@ -79,10 +144,12 @@ class Leaderboard():
         Returns:
             Nothing. The scanned data is stored in the 'shipData' instance variable.
         """
-        viableKeys=["name","rank","points","hex"]
-        if searchKey not in viableKeys:
-            raise BadSearchKey#(f"{searchKey} is not in the approved list of searchKeys; Approved List: {viableKeys}")
-        else:
-            def scan_data(data, term):
-                return list(filter(lambda x: x.get(searchKey) == term, data))
-            return scan_data(self.shipData,searchTerm)
+    viableKeys = ["name", "rank", "points", "hex"]
+    if searchKey not in viableKeys:
+      raise BadSearchKey  #(f"{searchKey} is not in the approved list of searchKeys; Approved List: {viableKeys}")
+    else:
+
+      def scan_data(data, term):
+        return list(filter(lambda x: x.get(searchKey) == term, data))
+
+      return scan_data(self.shipData, searchTerm)
