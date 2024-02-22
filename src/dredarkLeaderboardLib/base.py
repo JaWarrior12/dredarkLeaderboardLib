@@ -25,17 +25,11 @@ class Leaderboard():
         """
     ship_info = {}
     if url.count("ship")>=1:
-      prin
       response = requests.get(url)
       soup = BeautifulSoup(response.text, 'html.parser')
-      #print(soup)
       tables=str(soup.find_all("table", {"class": "leaderboard"})).replace("[","").replace("]","").replace('<table class="leaderboard">','').replace("</table>","").replace("<tr>","").replace("<td>","")
-      #print(f"tables: {tables}")
       lbEntries=tables.split("</tr>")
-      #print(lbEntries)
-      #ships = tables.find("tbody")  #.find_all("tr",limit=limit)
       ships=lbEntries
-      #print(ships)
       for ship in ships:
         try:
           rawData = ship.split("</td>")
@@ -45,7 +39,6 @@ class Leaderboard():
             "hex": data[1],
             "rank": int(data[0].replace("#","")),
             "score": data[2].split(" ")[0]
-            #"page":pageNum
           }
           self.shipData.append(listEntry)
         except Exception as e:
@@ -53,14 +46,9 @@ class Leaderboard():
     elif url.count("pilot")>=1:
       response = requests.get(url)
       soup = BeautifulSoup(response.text, 'html.parser')
-      #print(soup)
       tables=str(soup.find_all("table", {"class": "leaderboard"})).replace("[","").replace("]","").replace('<table class="leaderboard">','').replace("</table>","").replace("<tr>","").replace("<td>","")
-      #print(f"tables: {tables}")
       lbEntries=tables.split("</tr>")
-      #print(lbEntries)
-      #ships = tables.find("tbody")  #.find_all("tr",limit=limit)
       ships=lbEntries
-      #print(ships)
       for ship in ships:
         try:
           rawData = ship.split("</td>")
@@ -70,7 +58,6 @@ class Leaderboard():
             "name": data[1],
             "rank": int(data[0].replace("#","")),
             "score": data[2].split(" ")[0]
-            #"page":pageNum
           }
           self.shipData.append(listEntry)
         except Exception as e:
@@ -78,14 +65,9 @@ class Leaderboard():
     elif "clan" in url:
       response = requests.get(url)
       soup = BeautifulSoup(response.text, 'html.parser')
-      #print(soup)
       tables=str(soup.find_all("table", {"class": "leaderboard"})).replace("[","").replace("]","").replace('<table class="leaderboard">','').replace("</table>","").replace("<tr>","").replace("<td>","")
-      #print(f"tables: {tables}")
       lbEntries=tables.split("</tr>")
-      #print(lbEntries)
-      #ships = tables.find("tbody")  #.find_all("tr",limit=limit)
       ships=lbEntries
-      #print(ships)
       for ship in ships:
         try:
           rawData = ship.split("</td>")
@@ -95,7 +77,6 @@ class Leaderboard():
             "clan": data[1],
             "rank": int(data[0].replace("#","")),
             "score": data[2].split(" ")[0]
-            #"page":pageNum
           }
           self.shipData.append(listEntry)
         except Exception as e:
@@ -103,14 +84,9 @@ class Leaderboard():
     else:
       response = requests.get(url)
       soup = BeautifulSoup(response.text, 'html.parser')
-      #print(soup)
       tables=str(soup.find_all("table", {"class": "leaderboard"})).replace("[","").replace("]","").replace('<table class="leaderboard">','').replace("</table>","").replace("<tr>","").replace("<td>","")
-      #print(f"tables: {tables}")
       lbEntries=tables.split("</tr>")
-      #print(lbEntries)
-      #ships = tables.find("tbody")  #.find_all("tr",limit=limit)
       ships=lbEntries
-      #print(ships)
       for ship in ships:
         try:
           rawData = ship.split("</td>")
@@ -120,7 +96,6 @@ class Leaderboard():
             "name": data[1],
             "rank": int(data[0].replace("#","")),
             "score": data[2].split(" ")[0]
-            #"page":pageNum
           }
           self.shipData.append(listEntry)
         except Exception as e:

@@ -28,14 +28,9 @@ legacy leaderboards
     currentURL=url
     response = requests.get(currentURL)
     soup = BeautifulSoup(response.text, 'html.parser')
-    #print(soup)
     tables=str(soup.find_all("table", {"class": "leaderboard"})).replace("[","").replace("]","").replace('<table class="leaderboard">','').replace("</table>","").replace("<tr>","").replace("<td>","")
-    #print(f"tables: {tables}")
     lbEntries=tables.split("</tr>")
-    #print(lbEntries)
-    #ships = tables.find("tbody")  #.find_all("tr",limit=limit)
     ships=lbEntries
-    #print(ships)
     for ship in ships:
       try:
         rawData = ship.split("</td>")
@@ -45,7 +40,6 @@ legacy leaderboards
           "name": data[1],
           "rank": int(data[0].replace("#","")),
           "score": data[2].split(" ")[0]
-          #"page":pageNum
         }
         self.shipData.append(listEntry)
       except Exception as e:
