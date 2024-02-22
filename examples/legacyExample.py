@@ -1,8 +1,8 @@
 import src.dredarkLeaderboardLib as dll
 
-URL="https://drednot.io/leaderboard/?cat=boss_shield&by=pilot"
+URL="https://drednot.io/leaderboard/?cat=leg"
 LIMIT=10
-statistics=dll.Leaderboard() #Initiates the Leaderboard Object
+statistics=dll.LegacyLeaderboard() #Initiates the Leaderboard Object
 statistics.scan_Leaderboard(URL,LIMIT) #Scrapes the provided URL and stores the data
 print(statistics.shipData) #Prints the scrapped data
 #Or

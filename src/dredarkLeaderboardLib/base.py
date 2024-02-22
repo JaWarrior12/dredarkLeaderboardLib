@@ -14,7 +14,7 @@ class Leaderboard():
 
   def scan_Leaderboard(self, url: str, limit=None):
     """
-        Multiplies two numbers and returns the result.
+        Scrapes the DSA leaderboard provided
     
         Args:
             url (str): The leaderboard URL to scrape.
@@ -110,7 +110,7 @@ class Leaderboard():
 
   def fetch_ship(self, searchKey, searchTerm):
     """
-        Multiplies two numbers and returns the result.
+        Fetches entries based on the key and term
     
         Args:
             searchKey (str): Search for an individual ship by `name, rank, points, or hex (hex code)`. 
