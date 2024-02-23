@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dredarkLeaderboardLib"
-version = "1.0.0-alpha.7"
+version = "1.0.0-alpha.8"
 authors = [
   { name="JaWarrior12"},
 ]
 description = "A Library to fetch from the Deep Space Airships leaderboards."
 readme = "README.md"
-requires-python = ">=3.12.1"
+requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
