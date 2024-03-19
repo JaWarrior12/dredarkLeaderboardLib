@@ -1,6 +1,6 @@
 import src.dredarkLeaderboardLib as dll
 
-URL="https://drednot.io/leaderboard/?cat=archive"
+URL="https://drednot.io/leaderboard/?cat=bots&by=pilot"
 #print(URL.count("pilot"))
 LIMIT=10
 TOTALPAGES=10
@@ -12,4 +12,5 @@ statistics.scan_Leaderboard(URL,LIMIT)
 #Or
 #print(statistics.return_data())
 print(statistics.fetch_ship("name","JaMWarrior"))
-print(statistics.bs4Soup)
+print(statistics.fetch_ranks(1,10,True,False))
+#print(statistics.bs4Soup)

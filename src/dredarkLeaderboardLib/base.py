@@ -67,6 +67,7 @@ class Leaderboard():
       currentURL=f"{url}&p={pageNum}"
 
   
+  
   def return_data(self):
     """
         Returns:
@@ -84,7 +85,7 @@ class Leaderboard():
             searchTerm (str): The wanted term
     
         Returns:
-            Nothing. The scanned data is stored in the 'shipData' instance variable.
+            All Entries Matching The searchTerm & searchKey
         """
     viableKeys = ["name", "rank", "points", "hex"]
     if searchKey not in viableKeys:
@@ -95,3 +96,28 @@ class Leaderboard():
         return list(filter(lambda x: x.get(searchKey) == term, data))
 
       return scan_data(self.shipData, searchTerm)
+
+  def fetch_ranks(self, start : int,  end : int, startInclusive=True, endInclusive=True):
+    """
+        Fetches ranks within the designated start-end range.
+
+        Args:
+            start (int): The rank at the start of the range
+            end (int): The rank at the end of the range
+            startInclusive: Default is True; if False, the start is not included in the list
+            endInclusive: Default is True; if False, the end is not included in the list
+
+        Returns:
+            A List Of Entries Within The Specified Rank Range
+        """
+    def scan_data(data):
+      if startInclusive and endInclusive:
+        return list(filter(lambda x: (x.get("rank") >= start and x.get("rank") <= end) , data))
+      elif startInclusive and not endInclusive:
+        return list(filter(lambda x: (x.get("rank") >= start and x.get("rank") < end) , data))
+      elif endInclusive and not startInclusive:
+        return list(filter(lambda x: (x.get("rank") > start and x.get("rank") <= end) , data))
+      else:
+        return list(filter(lambda x: (x.get("rank") > start and x.get("rank") < end) , data))
+
+    return scan_data(self.shipData)
