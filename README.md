@@ -4,6 +4,7 @@ The library contains functions to fetch data from the Deep Space Airships (dredn
 
 Currently in Pre-Release
 
+Example:
 ```
 import src.dredarkLeaderboardLib as dll
 
