@@ -1,6 +1,7 @@
 import src.dredarkLeaderboardLib as dll
 
 URL="https://drednot.io/leaderboard/?cat=bots&by=pilot"
+#URL="https://drednot.io/leaderboard/?cat=leg"
 #print(URL.count("pilot"))
 LIMIT=10
 TOTALPAGES=10

@@ -15,6 +15,7 @@ legacy leaderboards
     self.shipData = []
     self.bs4Soup=None
 
+  @linkCheck("legacy")
   def scan_Leaderboard(self, url: str, totalPages=10, limit=None):
     """
         Scrapes the DSA leaderboard provided

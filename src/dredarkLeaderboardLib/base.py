@@ -14,7 +14,7 @@ class Leaderboard():
     self.shipData = []
     self.bs4Soup=None
 
-  
+  @linkCheck("base")
   def scan_Leaderboard(self, url: str, totalPages=10, limit=None):
     """
         Scrapes the DSA leaderboard provided
