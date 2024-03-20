@@ -28,4 +28,4 @@ class ImproperLink(Exception):
     # Now for your custom code...
     #self.errors = errors
 
-    super().__init__(message) #Initiate Error Messages
+    super().__init__(message) #Initiate Error Message
