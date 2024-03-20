@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from .errors import *
+from .checks import *
 
 
 class Leaderboard():
@@ -13,6 +14,7 @@ class Leaderboard():
     self.shipData = []
     self.bs4Soup=None
 
+  
   def scan_Leaderboard(self, url: str, totalPages=10, limit=None):
     """
         Scrapes the DSA leaderboard provided

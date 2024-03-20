@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from .errors import *
+from .checks import *
 
 
 class LegacyLeaderboard():
