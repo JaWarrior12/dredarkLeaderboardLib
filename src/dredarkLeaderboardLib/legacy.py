@@ -47,7 +47,7 @@ legacy leaderboards
           listEntry={
             "name": data[1],
             "rank": int(data[0].replace("#","")),
-            "score": data[2].split(" ")[0]
+            "score": int(data[2].split(" ")[0].replace(",",""))
           }
           self.shipData.append(listEntry)
         except Exception as e:

@@ -48,19 +48,19 @@ class Leaderboard():
             listEntry={
               "hex": data[1],
               "rank": int(data[0].replace("#","")),
-              "score": data[2].split(" ")[0]
+              "score": int(data[2].split(" ")[0].replace(",",""))
             }
           elif url.count("pilot")>0:
             listEntry={
               "name": data[1],
               "rank": int(data[0].replace("#","")),
-              "score": data[2].split(" ")[0]
+              "score": int(data[2].split(" ")[0].replace(",",""))
             }
           elif url.count("clan")>0:
             listEntry={
               "name": data[1],
               "rank": int(data[0].replace("#","")),
-              "score": data[2].split(" ")[0]
+              "score": int(data[2].split(" ")[0].replace(",",""))
             }
           self.shipData.append(listEntry)
         except Exception as e:
