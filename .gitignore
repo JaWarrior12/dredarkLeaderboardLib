@@ -170,4 +170,4 @@ dist/*
 main.py
 
 #Ignore __pycache__
-__pycache__/
+.__pycache__/
