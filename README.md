@@ -5,7 +5,7 @@ The library contains functions to fetch data from the Deep Space Airships (dredn
 Currently in Pre-Release
 
 Example:
-```
+``` python
 import src.dredarkLeaderboardLib as dll
 
 URL="https://drednot.io/leaderboard/?cat=boss_shield&by=pilot"
