@@ -4,20 +4,36 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dredarkLeaderboardLib"
-version = "1.0.0-alpha.11"
+version = "1.0.0-alpha.12"
 authors = [
   { name="JaWarrior12"},
 ]
 description = "A Library to fetch from the Deep Space Airships leaderboards."
+keywords = ["dredark.io","drednot.io","drednot","dredark","deep space airships", "jawarrior", "jamwarior", "leaderboard"]
 readme = "README.md"
+license = {file = "LICENSE"}
 requires-python = ">=3.10"
 classifiers = [
+    "Development Status :: 3 - Alpha",
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Natural Language :: English"
+]
+
+dependencies = [
+  "beautifulsoup4>=4.12.3",
+  "bs4>=0.0.2",
+  "certifi>=2024.2.2",
+  "charset-normalizer>=3.3.2",
+  "idna>=3.6",
+  "requests>=2.31.0",
+  "soupsieve>=2.5",
+  "urllib3>=2.2.1"
 ]
 
 [project.urls]
 Homepage = "https://github.com/JaWarrior12/dredarkLeaderboardLib"
 Issues = "https://github.com/JaWarrior12/dredarkLeaderboardLib/issues"
+Wiki = "https://github.com/JaWarrior12/dredarkLeaderboardLib/wiki"
 Discord = "https://discord.gg/WGmCS7pJ48"
