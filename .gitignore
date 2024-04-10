@@ -168,3 +168,6 @@ dist/*
 
 #Ignore A Testing File for remote work
 main.py
+
+#Ignore __pycache__
+__pycache__/
