@@ -29,3 +29,19 @@ class ImproperLink(Exception):
     #self.errors = errors
 
     super().__init__(message) #Initiate Error Message
+
+class DepreciatedModule(Exception):
+  """Depreciated Module Used
+
+  Attributes:
+      Module -- Depreciated Module
+      message -- explanation of the error
+
+  """
+  def __init__(self, module, message):            
+    # Call the base class constructor with the parameters it needs
+
+    # Now for your custom code...
+    #self.errors = errors
+
+    super().__init__(message)

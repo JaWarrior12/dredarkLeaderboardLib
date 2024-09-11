@@ -1,10 +1,12 @@
 import src.dredarkLeaderboardLib as dll
 
-URL="https://pub.drednot.io/prod/score_archive/1_pvp_elimination_wins_p.1.html"
+SEASON=1
+CATEGORY="bots"
+KEY="p"
 LIMIT=10
 TOTALPAGES=10
 statistics=dll.ArchiveLeaderboard() #Initiates the ArchiveLeaderboard Object
-statistics.scan_Leaderboard(URL, TOTALPAGES, LIMIT) #Scrapes the provided URL and stores the data
+statistics.scan_Leaderboard(SEASON, CATEGORY, KEY, TOTALPAGES, LIMIT) #Scrapes the provided URL and stores the data
 print(statistics.shipData) #Prints the scrapped data
 #Or
 print(statistics.return_data()) #Alternative Method to print data

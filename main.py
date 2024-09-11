@@ -1,17 +1,19 @@
 import src.dredarkLeaderboardLib as dll
 
-URL="https://drednot.io/leaderboard/?cat=bots&by=pilot"
-#URL="https://drednot.io/leaderboard/?cat=leg"
+#URL="https://drednot.io/leaderboard/?cat=bots&by=pilot"
+#URL="https://drednot.io/archive/leaderboard"
+URL="https://pub.drednot.io/prod/score_archive/1_pvp_elimination_wins_s.1.html" #Archives
 #print(URL.count("pilot"))
 LIMIT=10
 TOTALPAGES=10
-#statistics=dll.LegacyLeaderboard()
-statistics=dll.Leaderboard()
+statistics=dll.ArchiveLeaderboard()
+#statistics=dll.Leaderboard()
 #statistics.scan_Leaderboard(URL,TOTALPAGES,LIMIT)
-statistics.scan_Leaderboard(URL,LIMIT)
-#print(statistics.shipData)
+#statistics.scan_Leaderboard(URL,LIMIT)
+statistics.scan_Leaderboard(1,"bots","c") #Archive Function
+print(statistics.shipData)
 #Or
-print(statistics.return_data())
-print(statistics.fetch_ship("name","JaMWarrior"))
-print(statistics.fetch_ranks(1,10,True,False))
+#print(statistics.return_data())
+print(statistics.fetch_ship("name","Plexus"))
+#print(statistics.fetch_ranks(1,10,True,False))
 #print(statistics.bs4Soup)
