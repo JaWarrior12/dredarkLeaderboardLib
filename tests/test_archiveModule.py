@@ -8,16 +8,22 @@ from unittest.mock import patch, MagicMock
 from bs4 import BeautifulSoup
 #from import Leaderboard
 
-class TestLeaderboard(unittest.TestCase):
-    def setUp(self):
-        self.statistics = dll.Leaderboard()
+SEASON=1
+CATEGORY="bots"
+KEY="p"
+LIMIT=10
+TOTALPAGES=10
 
-    @patch('src.dredarkLeaderboardLib.base.requests.get')
-    @patch('src.dredarkLeaderboardLib.base.BeautifulSoup')
+class TestArchiveLeaderboard(unittest.TestCase):
+    def setUp(self):
+        self.statistics = dll.ArchiveLeaderboard()
+
+    @patch('src.dredarkLeaderboardLib.archive.requests.get')
+    @patch('src.dredarkLeaderboardLib.archive.BeautifulSoup')
     def test_scan_Leaderboard(self, mock_bs, mock_requests_get):
         mock_requests_get.return_value = MagicMock()
         mock_bs.return_value = BeautifulSoup("", 'html.parser')
-        self.statistics.scan_Leaderboard("https://example.com/leaderboard", 5, 10)
+        self.statistics.scan_Leaderboard(SEASON, CATEGORY, KEY, TOTALPAGES, LIMIT)
         self.assertTrue(self.statistics.shipData)
 
     def test_return_data(self):

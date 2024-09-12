@@ -77,7 +77,7 @@ legacy leaderboards (DEPRICIATED)
         Returns:
             Nothing. The scanned data is stored in the 'shipData' instance variable.
         """
-    viableKeys = ["name", "rank", "points"]
+    viableKeys = ["name", "rank", "score"]
     if searchKey not in viableKeys:
       raise BadSearchKey
     else:

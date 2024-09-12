@@ -89,7 +89,7 @@ class Leaderboard():
         Returns:
             All Entries Matching The searchTerm & searchKey
         """
-    viableKeys = ["name", "rank", "points", "hex"]
+    viableKeys = ["name", "rank", "score", "hex"]
     if searchKey not in viableKeys:
       raise BadSearchKey
     else:

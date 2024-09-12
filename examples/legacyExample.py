@@ -1,9 +1,11 @@
+# !!!DEPRECIATED MODULE!!! #
+
 import src.dredarkLeaderboardLib as dll
 
 URL="https://pub.drednot.io/prod/score_archive/1_pvp_elimination_wins_p.1.html"
 LIMIT=10
 TOTALPAGES=10
-statistics=dll.ArchiveLeaderboard() #Initiates the ArchiveLeaderboard Object
+statistics=dll.LegacyLeaderboard() #Initiates the ArchiveLeaderboard Object
 statistics.scan_Leaderboard(URL, TOTALPAGES, LIMIT) #Scrapes the provided URL and stores the data
 print(statistics.shipData) #Prints the scrapped data
 #Or

@@ -21,10 +21,12 @@ class ArchiveLeaderboard():
   def scan_Leaderboard(self, season: int, category: str, key: str, totalPages=10, limit=None):
   #def scan_Leaderboard(self, url: str, totalPages=10, limit=None):
     """
-        Scrapes the DSA leaderboard provided
+        Scrapes the DSA leaderboard leaderboard using the provided season, category, and key.
     
         Args:
-            url (str): The leaderboard URL to scrape.
+            season (int): The archived season to fetch.
+            category (str): The leaderboard catgory to fetch. Ex: bots or boss_lazer.
+            key (str): The sort key to fetch. Options: p (pilot), c (clan), s (ship).
             totalPages (int): The total number of pages for the leaderboard. (The number below the table). Default is 10 
             limit (int): Limit of how many entries to retrieve from the page.
     
