@@ -171,3 +171,7 @@ main.py
 
 #Ignore __pycache__
 .__pycache__/
+
+#Ignore Replit Files
+.replit
+replit.nix
