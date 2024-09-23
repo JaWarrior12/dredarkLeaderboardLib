@@ -30,11 +30,11 @@ class ImproperLink(Exception):
 
     super().__init__(message) #Initiate Error Message
 
-class DepreciatedModule(Exception):
-  """Depreciated Module Used
+class DeprecatedModule(Exception):
+  """Deprecated Module Used
 
   Attributes:
-      Module -- Depreciated Module
+      Module -- Deprecated Module
       message -- explanation of the error
 
   """

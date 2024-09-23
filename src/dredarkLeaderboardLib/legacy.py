@@ -8,15 +8,15 @@ from .checks import *
 class LegacyLeaderboard():
   """
     This class is used to scrape the Deep Space Airships 
-legacy leaderboards (DEPRICIATED)
+legacy leaderboards (DEPRECATED)
     """
 
   def __init__(self):
     self.shipData = []
     self.bs4Soup=None
     from warnings import warn
-    warn("The LegacyLeaderboard Module has been depreciated, please use the Archive Module.")
-    raise DepreciatedModule("LegacyLeaderboard","The LegacyLeaderboard Module is depreciated, please use the ArchiveLeaderboard Module.")
+    warn("The LegacyLeaderboard Module has been deprecated, please use the Archive Module.")
+    raise DeprecatedModule("LegacyLeaderboard","The LegacyLeaderboard Module is depreciated, please use the ArchiveLeaderboard Module.")
 
   @linkCheck("legacy")
   def scan_Leaderboard(self, url: str, totalPages=10, limit=None):

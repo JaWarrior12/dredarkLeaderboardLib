@@ -1,4 +1,4 @@
-# !!!DEPRECIATED MODULE!!! #
+# !!!DEPRECATED MODULE!!! #
 
 import src.dredarkLeaderboardLib as dll
 
