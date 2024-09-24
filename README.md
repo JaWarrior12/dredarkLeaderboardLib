@@ -4,6 +4,8 @@ The library contains functions to fetch data from the Deep Space Airships (dredn
 
 Current Verison: 2.0.2
 
+**Usage of this library to violate the Deep Space Airships Terms of Service Is Not Allowed**
+
 Base Example:
 ``` python
 import src.dredarkLeaderboardLib as dll
