@@ -37,6 +37,7 @@ class Leaderboard():
       self.bs4Soup=soup
       tables=str(soup.find_all("table", {"class": "leaderboard"})).replace("[","").replace("]","").replace('<table class="leaderboard">','').replace("</table>","").replace("<tr>","").replace("<td>","")
       lbEntries=tables.split("</tr>")
+      if limit==None
       ships=lbEntries
       for ship in ships:
         try:
