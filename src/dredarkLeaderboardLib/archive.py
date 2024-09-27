@@ -1,5 +1,4 @@
 import requests
-import re
 from bs4 import BeautifulSoup
 
 from .errors import *
@@ -18,7 +17,7 @@ class ArchiveLeaderboard():
 
   #@linkFormatCheck("archive")
   #@linkCheck("archive")
-  def scan_Leaderboard(self, season: int, category: str, key: str, totalPages=10, limit=None):
+  def scan_Leaderboard(self, season: int, category: str, key: str, totalPages=None, perPageLimit=None, totalLimit=None):
   #def scan_Leaderboard(self, url: str, totalPages=10, limit=None):
     """
         Scrapes the DSA leaderboard leaderboard using the provided season, category, and key.
@@ -27,8 +26,9 @@ class ArchiveLeaderboard():
             season (int): The archived season to fetch.
             category (str): The leaderboard catgory to fetch. Ex: bots or boss_lazer.
             key (str): The sort key to fetch. Options: p (pilot), c (clan), s (ship).
-            totalPages (int): The total number of pages for the leaderboard. (The number below the table). Default is 10 
-            limit (int): Limit of how many entries to retrieve from the page.
+            totalPages (int): The total number of pages for the leaderboard. (The number below the table). Default is None 
+            perPageLimit (int): Limit of how many entries to retrieve from each page.
+            totalLimit (int): Limit of how many total entries to fetch.
     
         Returns:
             Nothing. The scanned data is stored in the 'shipData' instance variable.
@@ -37,7 +37,9 @@ class ArchiveLeaderboard():
     shipCount=0
     ship_info = {}
     currentURL=f"{URL_BASE}{season}_{category}_{key}.{pageNum}.html"
-    while pageNum<totalPages:
+    endLoopCheck=False #Check to end loop on last page when totalPages is none.
+    last3Entries=[] #Last 3 entries to compare against to break loop when totalPages is none.
+    while ((totalPages is not None) and (pageNum<totalPages)) or ((totalPages is None) and (endLoopCheck is False)):
       ships=[]
       response = requests.get(currentURL)
       soup = BeautifulSoup(response.text, 'html.parser')
@@ -55,7 +57,15 @@ class ArchiveLeaderboard():
         out = [''.join(map(str, temp[i:i+N])) for i in range(0, len(temp), N)]
         out=out[:-1]
         lbEntries=out
-      ships=lbEntries
+      if type(perPageLimit) is int:
+        ships=lbEntries[:perPageLimit]
+      else:
+        ships=lbEntries
+      if last3Entries==lbEntries[:3]:
+        endLoopCheck=True
+        break
+      else:
+        last3Entries=lbEntries[:3]
       for ship in ships:
         try:
           rawData = ship.split('<td')
@@ -86,7 +96,8 @@ class ArchiveLeaderboard():
           pass
       pageNum+=1
       currentURL=f"{URL_BASE}{season}_{category}_{key}.{pageNum}.html"
-
+    if type(totalLimit) is int:
+      self.shipData=self.shipData[:totalLimit]
   
   
   def return_data(self):
