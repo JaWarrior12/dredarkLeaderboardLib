@@ -12,7 +12,8 @@ class Leaderboard():
 
   def __init__(self):
     self.shipData = []
-    self.bs4Soup=None
+    self.category = None
+    self.bs4Soup = None
 
   @linkCheck("base")
   def scan_Leaderboard(self, url: str, totalPages=None, perPageLimit=None, totalLimit=None):
@@ -28,6 +29,12 @@ class Leaderboard():
         Returns:
             Nothing. The scanned data is stored in the 'shipData' instance variable.
         """
+    if url.count("ship") > 0:
+      self.category = "ships"
+    elif url.count("pilot") > 0:
+      self.category = "pilot"
+    elif url.count("clan") > 0:
+      self.category = "clan"
     pageNum=1
     shipCount=0
     ship_info = {}
@@ -57,9 +64,10 @@ class Leaderboard():
           listEntry={}
           if url.count("ship")>0:
             listEntry={
-              "hex": data[1],
+              "name": data[1],
+              "hex": data[2],
               "rank": int(data[0].replace("#","")),
-              "score": int(data[2].split(" ")[0].replace(",",""))
+              "score": int(data[3].split(" ")[0].replace(",",""))
             }
           elif url.count("pilot")>0:
             listEntry={
@@ -136,3 +144,15 @@ class Leaderboard():
         return list(filter(lambda x: (x.get("rank") > start and x.get("rank") < end) , data))
 
     return scan_data(self.shipData)
+
+  def search_by(self, key : str):
+    """
+        Searches for entries with names that contain the provided key.
+
+        Args:
+            key (str): The substring to search for in all entries.
+
+        Returns:
+            All entries that contain the specified key (substring).
+    """
+    return list(filter(lambda x: (x.get("name")).count(key) > 0, self.shipData))

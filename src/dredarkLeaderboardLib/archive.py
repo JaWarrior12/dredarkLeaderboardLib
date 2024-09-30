@@ -153,3 +153,15 @@ class ArchiveLeaderboard():
         return list(filter(lambda x: (x.get("rank") > start and x.get("rank") < end) , data))
 
     return scan_data(self.shipData)
+
+  def search_by(self, key : str):
+    """
+        Searches for entries with names that contain the provided key.
+
+        Args:
+            key (str): The substring to search for in all entries.
+
+        Returns:
+            All entries that contain the specified key (substring).
+    """
+    return list(filter(lambda x: (x.get("name")).count(key) > 0, self.shipData))
