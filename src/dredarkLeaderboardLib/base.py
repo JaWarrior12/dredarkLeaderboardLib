@@ -20,13 +20,13 @@ class Leaderboard():
   def scan_Leaderboard(self, url: str, totalPages=None, perPageLimit=None, totalLimit=None):
     """
         Scrapes the DSA leaderboard provided
-    
+
         Args:
             url (str): The leaderboard URL to scrape.
             totalPages (int): The total number of pages for the leaderboard. (The number below the table). Default is None
             perPageLimit (int): Limit of how many entries to retrieve from each page.
             totalLimit (int): Limit of how many total entries to fetch.
-    
+
         Returns:
             Nothing. The scanned data is stored in the 'shipData' instance variable.
         """
@@ -82,9 +82,7 @@ class Leaderboard():
       currentURL=f"{url}&p={pageNum}"
     if type(totalLimit) is int:
       self.shipData=self.shipData[:totalLimit]
-
-  
-  
+      
   def return_data(self):
     """
         Returns:
@@ -96,11 +94,11 @@ class Leaderboard():
     """
         Fetches entries based on the key and term
         Viable Key: name, rank, points, hex
-    
+
         Args:
             searchKey (str): Search for an individual ship by `name, rank, points, or hex (ship hex code)`. 
             searchTerm (str): The wanted term
-    
+
         Returns:
             All Entries Matching The searchTerm & searchKey
         """
