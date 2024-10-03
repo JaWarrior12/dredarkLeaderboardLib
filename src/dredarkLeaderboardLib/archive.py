@@ -107,7 +107,7 @@ class ArchiveLeaderboard():
         """
     return self.shipData
 
-  def fetch_ship(self, searchKey, searchTerm):
+  def fetch_entry(self, searchKey, searchTerm):
     """
         Fetches entries based on the key and term
         Viable Key: name, rank, score, hex
