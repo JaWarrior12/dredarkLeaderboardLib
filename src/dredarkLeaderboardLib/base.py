@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 
 from .errors import *
 from .checks import *
+from .decorators import *
 
 
 class Leaderboard():
@@ -14,6 +15,7 @@ class Leaderboard():
     self.shipData = []
     self.bs4Soup=None
 
+  @rate_limits()
   @linkCheck("base")
   def scan_Leaderboard(self, url: str, totalPages=None, perPageLimit=None, totalLimit=None):
     """
@@ -80,9 +82,7 @@ class Leaderboard():
       currentURL=f"{url}&p={pageNum}"
     if type(totalLimit) is int:
       self.shipData=self.shipData[:totalLimit]
-
-
-
+      
   def return_data(self):
     """
         Returns:

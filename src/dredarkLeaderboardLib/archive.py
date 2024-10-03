@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+from dredarkLeaderboardLib.decorators import rate_limits
+
 from .errors import *
 from .checks import *
 
@@ -15,6 +17,7 @@ class ArchiveLeaderboard():
     self.shipData = []
     self.bs4Soup=None
 
+  @rate_limits()
   #@linkFormatCheck("archive")
   #@linkCheck("archive")
   def scan_Leaderboard(self, season: int, category: str, key: str, totalPages=None, perPageLimit=None, totalLimit=None):
@@ -98,8 +101,7 @@ class ArchiveLeaderboard():
       currentURL=f"{URL_BASE}{season}_{category}_{key}.{pageNum}.html"
     if type(totalLimit) is int:
       self.shipData=self.shipData[:totalLimit]
-
-
+      
   def return_data(self):
     """
         Returns:
