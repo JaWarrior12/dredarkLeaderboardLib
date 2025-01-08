@@ -2,6 +2,9 @@
 Dredark Leaderboard Library for Python!  
 The library contains functions to fetch data from the Deep Space Airships (drednot.io) leaderboard pages.
 
+### Notice
+Due to Cloudflare protection changes on the target site, this library no longer functions properly.
+
 **Usage of This Library to Violate the Deep Space Airships Terms of Service Is Not Allowed**
 
 Base Example:
